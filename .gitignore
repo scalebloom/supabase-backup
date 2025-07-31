@@ -1,5 +1,4 @@
 node_modules/
 .env
 *.log
-backup-manifest.json
-*.json
+backup-*
