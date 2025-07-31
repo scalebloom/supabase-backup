@@ -11,23 +11,27 @@ Complete backup solution for Supabase database and storage buckets. Creates a si
 
 ## Setup
 
-1. **Install dependencies:**
+### Automated (GitHub Actions)
 
-   ```bash
-   npm install
-   ```
+1. **Add GitHub Secrets:**
 
+   - Go to repo **Settings** → **Secrets and variables** → **Actions**
+   - Add `SUPABASE_URL` and `SUPABASE_SERVICE_KEY`
+   - Secrets are encrypted and private (not visible in public repos)
+
+2. **Workflow runs automatically:**
+   - Daily at 6 AM UTC (1 AM EST / 2 AM EDT)
+   - Manual trigger available in **Actions** tab
+
+### Manual (Local)
+
+1. **Install dependencies:** `npm install`
 2. **Create `.env` file:**
-
    ```
    SUPABASE_URL=your_project_url
    SUPABASE_SERVICE_KEY=your_service_role_key
    ```
-
-3. **Run backup:**
-   ```bash
-   node backup.js
-   ```
+3. **Run backup:** `node backup.js`
 
 ## Output
 
@@ -42,37 +46,37 @@ backup-2025-07-31/
 
 **Recovery**: Simply unzip the file to restore all data.
 
+## Current Status
+
+✅ **Automated Daily Backups**: GitHub Actions runs daily at 6 AM UTC  
+✅ **30-Day Retention**: Backup artifacts stored for 30 days  
+✅ **Manual Trigger**: Can run on-demand via Actions tab
+
 ## Next Steps Options
 
-### Manual (Current)
+### Current (GitHub Artifacts)
 
-- Run `node backup.js` daily
-- Upload zip file to Google Drive manually
-- Simple and reliable
+- Backups stored as GitHub artifacts for 30 days
+- Download manually from Actions tab when needed
+- Free and reliable
 
-### Automated Upload
+### Google Drive Integration
 
-- Add Google Drive API integration
-- Automatic upload after backup creation
-- Still requires manual script execution
+- Add automatic upload to Google Drive after backup creation
+- Unlimited retention (or your Drive storage limit)
+- Requires Google Drive API setup
 
-### Full Automation
+### Email Notifications
 
-- Deploy to GitHub Actions
-- Runs daily on schedule
-- Automatic upload to Google Drive
-- Zero manual intervention
-
-### Hybrid Approach
-
-- Keep manual script for immediate backups
-- Add scheduled automation for daily backups
-- Best of both worlds
+- Get notified when backups succeed/fail
+- Simple status monitoring
+- Easy to add to existing workflow
 
 ## File Structure
 
+- `.github/workflows/backup.yml` - GitHub Actions automation
 - `backup.js` - Main backup script
 - `package.json` - Dependencies
-- `.env` - Supabase credentials (not committed)
+- `.env` - Supabase credentials (not committed, local only)
 - `backup-*/` - Local backup folders (ignored)
 - `*.zip` - Compressed backup files (ignored)
