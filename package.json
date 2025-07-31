@@ -1,6 +1,7 @@
 {
   "name": "supabase-backup",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "backup": "node backup.js"
   },
