@@ -1,0 +1,10 @@
+{
+  "name": "supabase-backup",
+  "version": "1.0.0",
+  "scripts": {
+    "backup": "node backup.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.0.0"
+  }
+}
