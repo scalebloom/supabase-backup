@@ -2,7 +2,7 @@
 name: Daily Backup
 
 on:
-  # Run every day at 6 AM UTC (1-2 AM EST)
+  # Run every day at 6 AM UTC (1 AM EST / 2 AM EDT)
   schedule:
     - cron: "0 6 * * *"
 
@@ -35,5 +35,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: backup-${{ github.run_number }}
-          path: backup-*.zip
+          path: backup-*/
           retention-days: 30
